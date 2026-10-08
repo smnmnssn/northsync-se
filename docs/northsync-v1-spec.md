@@ -69,60 +69,46 @@ Whitespace, typography, structure and subtle technical details should create the
 
 ## 3. Northsync brand mark
 
-Create a custom SVG symbol based on a stylized Scandinavian spruce/fir tree.
+The Northsync mark is a **Geometric N with a North Marker**.
 
-The tree should be constructed from:
+Reference: `docs/references/northsync-geometric-n-reference.png`
 
-- geometric lines
-- circular nodes
-- a central vertical structure
-- several branching levels
+Construction:
 
-The intention is that a network/system diagram naturally forms the silhouette of a spruce.
+- a solid geometric N in the dark structure color: left stem plus a heavy diagonal that ends in a vertical right foot
+- a blue triangular north marker in the upper-right corner, pointing up and to the left, separated from the N by a small gap
+- filled flat shapes only; no strokes, circles, gradients or ornament
+- approximately square overall proportions
 
-The symbol should suggest:
+The intended reading is a geometric N first, with a north/upward marker integrated into the upper-right corner.
 
-- systems
-- connections
-- structure
-- technology
-- synchronization
-- Nordic identity
+It must NOT include trees, branches, network nodes, compass rings, mountains or generic arrow icons.
 
-It must NOT resemble:
+### Shared geometry
 
-- a Christmas tree
-- clip art
-- a forestry logo
-- an environmental logo
+One canonical source, `components/brand/north-mark.tsx`, defines the geometry. The header, footer, hero graphic, favicon, app icon and Open Graph image all derive from it. No separate hand-drawn copies.
 
-Do not use green.
+### Variants
 
-Most lines and nodes should use the dark neutral brand color.
+- Light backgrounds: N in `#111315`, marker in `#2563EB`
+- Dark backgrounds: N in the light foreground `#F6F7F4`, marker in `#2563EB`
+- Identical geometry in both
 
-A small number of nodes can use the Northsync blue accent.
+### Lockup
 
-### Compact logo
+Header and footer lockup:
 
-The compact logo version should remain readable at header/favicon sizes.
+`[N mark] NORTHSYNC`
 
-Aim for approximately 7–10 meaningful nodes.
+NORTHSYNC uses uppercase lettering with restrained letter spacing. The mark must stay recognizable at 32–40px.
 
-Header lockup:
+### Favicon and app icon
 
-`[tree symbol] NORTHSYNC`
+Dark tile, light N, blue marker, no text. Derived from the same geometry.
 
-NORTHSYNC should use uppercase lettering with restrained letter spacing.
+### Hero graphic
 
-### Hero version
-
-Create a larger variation based on the same geometry.
-
-Approximately 20–30 nodes may be used.
-
-It can be more detailed than the logo while clearly belonging to the same visual system.
-
-Use subtle animation only.
+A larger composition built from the same N and marker polygons: the primary mark with a hairline outline echo of the N and subtle construction lines taken from the mark's own edges. It must not look like the logo simply enlarged. Static; no animation.
 
 ---
 
@@ -174,7 +160,7 @@ Blue should primarily attract attention to:
 
 - calls to action
 - links
-- selected nodes
+- the north marker
 - small interactive details
 
 Avoid large areas of bright blue.
@@ -351,7 +337,7 @@ Sticky.
 
 Left:
 
-Northsync tree symbol + NORTHSYNC
+Northsync N mark + NORTHSYNC
 
 Desktop navigation:
 
@@ -411,27 +397,19 @@ Do not overcrowd it.
 
 ### Hero graphic
 
-Use the larger technical spruce/network illustration.
+Use the large Geometric N graphic described in the brand mark section.
 
 It should feel integrated with the design rather than being a decorative stock illustration.
 
-Subtle animation is allowed:
+The hero graphic is static in V1.
 
-- slow node pulse
-- subtle opacity changes
-- possibly a restrained signal moving through one connection
-
-No particles.
-
-No constant distracting motion.
-
-Respect `prefers-reduced-motion`.
+No particles. No constant distracting motion.
 
 Mobile layout:
 
 copy
 → CTAs
-→ spruce visual
+→ N graphic
 
 ---
 
@@ -493,7 +471,7 @@ Metadata:
 
 `SYSTEM · API:ER · AUTOMATION · INTEGRATIONER`
 
-Small abstract node/line graphics derived from the Northsync identity can be used as supporting decoration.
+Small abstract line graphics in the Northsync visual language can be used as supporting decoration.
 
 ---
 
@@ -574,7 +552,7 @@ Intro:
 
 Desktop:
 
-Connect the stages using a subtle horizontal line/node motif derived from the Northsync visual identity.
+Connect the stages using a subtle horizontal line-and-marker motif in the Northsync visual language.
 
 Mobile:
 
@@ -690,17 +668,12 @@ Allowed:
 
 - subtle fade/translate entrances
 - small hover transitions
-- slow node animation in the hero
 - subtle arrow movement
 
 Typical section reveal:
 
 Approximately 16px translate
 Approximately 500–700ms
-
-Hero network movement:
-
-Approximately 6–10 second cycles
 
 Avoid:
 

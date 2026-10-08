@@ -9,8 +9,8 @@ const SLIDES = [
     title: "Storefront",
     caption: "Responsiv butik och produktpresentation",
     src: "/case/heavycards-storefront-desktop.png",
-    width: 1532,
-    height: 1301,
+    width: 2341,
+    height: 1295,
     alt: "Skärmbild av HeavyCards startsida med sidhuvud, introduktion och utvalda produkter.",
   },
   {

@@ -1,10 +1,10 @@
 import { ImageResponse } from "next/og";
-import { spruceMarkDocument } from "@/components/brand/spruce-mark";
+import { northMarkDataUri, NORTH_INK } from "@/components/brand/north-mark";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-const src = `data:image/svg+xml;base64,${Buffer.from(spruceMarkDocument({ inverted: true })).toString("base64")}`;
+const src = northMarkDataUri({ inverted: true });
 
 export default function AppleIcon() {
   return new ImageResponse(
@@ -16,11 +16,11 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0E1114",
+          background: NORTH_INK,
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} width={124} height={124} alt="" />
+        <img src={src} width={118} height={118} alt="" />
       </div>
     ),
     size,

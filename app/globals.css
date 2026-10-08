@@ -261,77 +261,14 @@
     animation: hero-enter 700ms 120ms var(--ease-out-soft) both;
   }
 
-  .hero-enter-slow {
-    animation: hero-fade 1400ms 200ms ease-out both;
-  }
 
-  .node-pulse {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: node-pulse 8s ease-in-out infinite;
-  }
 
-  .node-breathe {
-    animation: node-breathe 9s ease-in-out infinite;
-  }
 
-  .signal {
-    animation: signal 8s linear infinite;
-  }
 }
 
 @keyframes hero-enter {
   from {
     opacity: 0;
     transform: translateY(16px);
-  }
-}
-
-@keyframes hero-fade {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes node-pulse {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  45% {
-    opacity: 0.18;
-  }
-  70% {
-    opacity: 0;
-    transform: scale(1.6);
-  }
-}
-
-@keyframes node-breathe {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.45;
-  }
-}
-
-@keyframes signal {
-  0% {
-    stroke-dashoffset: 8;
-    opacity: 0;
-  }
-  4% {
-    opacity: 1;
-  }
-  38% {
-    opacity: 1;
-  }
-  42%,
-  100% {
-    stroke-dashoffset: -100;
-    opacity: 0;
   }
 }

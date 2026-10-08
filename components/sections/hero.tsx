@@ -1,4 +1,4 @@
-import { SpruceNetwork } from "@/components/brand/spruce-network";
+import { NorthGraphic } from "@/components/brand/north-graphic";
 import { ButtonLink, MetaList } from "@/components/ui";
 
 export function Hero() {
@@ -30,7 +30,7 @@ export function Hero() {
         </div>
 
         <div className="col-span-4 md:col-span-4 md:col-start-2 lg:col-span-5 lg:col-start-8">
-          <SpruceNetwork className="mx-auto w-full max-w-[300px] sm:max-w-[360px] lg:-mx-4 lg:w-[calc(100%+2rem)] lg:max-w-none xl:-mx-8 xl:w-[calc(100%+4rem)]" />
+          <NorthGraphic className="mx-auto w-full max-w-[300px] sm:max-w-[360px] lg:-mx-4 lg:w-[calc(100%+2rem)] lg:max-w-none xl:-mx-8 xl:w-[calc(100%+4rem)]" />
         </div>
       </div>
     </section>

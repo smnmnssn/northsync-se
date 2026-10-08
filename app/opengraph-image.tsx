@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { spruceMarkDocument } from "@/components/brand/spruce-mark";
+import { northMarkDataUri } from "@/components/brand/north-mark";
 
 export const alt = "Northsync – Digitala lösningar byggda för verksamheten.";
 export const size = { width: 1200, height: 630 };
@@ -11,7 +11,7 @@ const root = process.cwd();
 const sans = readFileSync(join(root, "assets/fonts/Geist-SemiBold.ttf"));
 const mono = readFileSync(join(root, "assets/fonts/GeistMono-Medium.ttf"));
 
-const markSrc = `data:image/svg+xml;base64,${Buffer.from(spruceMarkDocument()).toString("base64")}`;
+const markSrc = northMarkDataUri();
 
 export default function OpengraphImage() {
   return new ImageResponse(
