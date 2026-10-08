@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Arrow } from "@/components/ui";
 
@@ -9,8 +9,10 @@ const SLIDES = [
     title: "Storefront",
     caption: "Responsiv butik och produktpresentation",
     src: "/case/heavycards-storefront-desktop.png",
-    width: 2341,
-    height: 1295,
+    width: 1691,
+    height: 1302,
+    // Portrait variant for narrow screens (below the stage's 560px breakpoint).
+    narrow: { src: "/case/heavycards-storefront-desktop-mobile.png", width: 1872, height: 2372 },
     alt: "Skärmbild av HeavyCards startsida med sidhuvud, introduktion och utvalda produkter.",
   },
   {
@@ -41,6 +43,32 @@ const SLIDES = [
 ] as const;
 
 const subscribeNone = () => () => {};
+const shotClass = "h-auto max-h-full w-auto max-w-full rounded-[10px] md:rounded-[14px]";
+const SHOT_SIZES = "(min-width: 1368px) 1176px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 72px)";
+
+/** Native <picture>: portrait image below 560px (the stage's own breakpoint), landscape above. */
+function ResponsiveShot({
+  slide,
+}: {
+  slide: { src: string; width: number; height: number; alt: string; narrow: { src: string; width: number; height: number } };
+}) {
+  const common = { alt: slide.alt, quality: 90, sizes: SHOT_SIZES };
+  const wide = getImageProps({ ...common, src: slide.src, width: slide.width, height: slide.height, priority: true });
+  const narrow = getImageProps({
+    ...common,
+    src: slide.narrow.src,
+    width: slide.narrow.width,
+    height: slide.narrow.height,
+    priority: true,
+  });
+  return (
+    <picture className="contents">
+      <source media="(min-width: 560px)" srcSet={wide.props.srcSet} sizes={SHOT_SIZES} />
+      <img {...narrow.props} alt={slide.alt} className={shotClass} />
+    </picture>
+  );
+}
+
 const pad = (n: number) => String(n).padStart(2, "0");
 
 export function HeavyCardsCarousel() {
@@ -135,6 +163,9 @@ export function HeavyCardsCarousel() {
                   </div>
                 ) : (
                   <div className="flex size-full items-center justify-center">
+                    {"narrow" in slide ? (
+                      <ResponsiveShot slide={slide} />
+                    ) : (
                     <Image
                       src={slide.src}
                       alt={slide.alt}
@@ -143,8 +174,9 @@ export function HeavyCardsCarousel() {
                       quality={90}
                       priority={i === 0}
                       sizes="(min-width: 1368px) 1176px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 72px)"
-                      className="h-auto max-h-full w-auto max-w-full rounded-[10px] md:rounded-[14px]"
+                      className={shotClass}
                     />
+                    )}
                   </div>
                 )}
               </div>
