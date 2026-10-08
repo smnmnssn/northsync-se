@@ -39,6 +39,7 @@ const SLIDES = [
     src: "/case/heavycards-admin-overview.png",
     width: 1609,
     height: 1236,
+    narrow: { src: "/case/heavycards-admin-overview-mobile.png", width: 1438, height: 1308 },
     alt: "Skärmbild av HeavyCards administrationsöversikt med nya beställningar, försäljning, senaste order och lågt lager.",
   },
 ] as const;
@@ -167,20 +168,7 @@ export function HeavyCardsCarousel() {
                   </div>
                 ) : (
                   <div className="flex size-full items-center justify-center">
-                    {"narrow" in slide ? (
-                      <ResponsiveShot slide={slide} priority={i === 0} />
-                    ) : (
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      width={slide.width}
-                      height={slide.height}
-                      quality={90}
-                      priority={i === 0}
-                      sizes="(min-width: 1368px) 1176px, (min-width: 768px) calc(100vw - 128px), calc(100vw - 72px)"
-                      className={shotClass}
-                    />
-                    )}
+                    <ResponsiveShot slide={slide} priority={i === 0} />
                   </div>
                 )}
               </div>
