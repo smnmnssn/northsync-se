@@ -97,6 +97,10 @@
     font-size: 3rem;
     line-height: 1.08;
   }
+  @variant xl {
+    font-size: 3.25rem;
+    line-height: 1.06;
+  }
 }
 
 /* Large editorial statements (positioning, principle). */
@@ -114,8 +118,23 @@
     line-height: 1.05;
   }
   @variant xl {
-    font-size: 3.75rem;
-    line-height: 1.04;
+    font-size: 4rem;
+    line-height: 1.03;
+  }
+}
+
+/* Service titles: between H2 and H3 so each panel reads as its own chapter. */
+@utility text-title {
+  font-size: 1.875rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+
+  @variant md {
+    font-size: 2.25rem;
+  }
+  @variant lg {
+    font-size: 2.5rem;
   }
 }
 
@@ -138,14 +157,18 @@
   @variant md {
     font-size: 1.1875rem;
   }
+  @variant xl {
+    font-size: 1.25rem;
+    line-height: 1.58;
+  }
 }
 
 @utility text-body {
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: 1.0625rem;
+  line-height: 1.62;
 
-  @variant md {
-    font-size: 1.0625rem;
+  @variant lg {
+    font-size: 1.125rem;
   }
 }
 
@@ -154,6 +177,16 @@
   font-size: 0.75rem;
   line-height: 1.5;
   letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Slightly larger mono metadata for content that should actually be read. */
+@utility text-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 

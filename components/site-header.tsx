@@ -70,7 +70,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="rounded-md px-3 py-2 text-[0.9375rem] text-ink/75 transition-colors hover:text-ink"
+                  className="rounded-md px-3.5 py-2 text-base text-ink/80 transition-colors hover:text-ink"
                 >
                   {item.label}
                 </a>

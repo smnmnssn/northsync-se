@@ -9,11 +9,12 @@ const TOP = 3.5;
 const BOTTOM = 28.5;
 const ACCENT = "#2563EB";
 
-// [junction y, tip dx, tip y]
+// [junction y, tip dx, tip y] — spread and droop grow towards the base,
+// so the silhouette tapers like a spruce rather than forming a flat triangle.
 const TIERS = [
-  [8, 4.5, 12.5],
-  [14, 7.5, 19.5],
-  [20, 11, 27],
+  [8, 3.5, 11.5],
+  [14, 7, 18.5],
+  [20, 11.75, 26.5],
 ] as const;
 
 const LIGHT = { ink: "#111315", fill: "#F6F7F4" };
@@ -26,19 +27,26 @@ const DARK = { ink: "#F6F7F4", fill: "#0E1114" };
 export function spruceMarkSvg({ inverted = false }: { inverted?: boolean } = {}) {
   const { ink, fill } = inverted ? DARK : LIGHT;
   const node = (cx: number, cy: number, accent: boolean) =>
-    `<circle cx="${cx}" cy="${cy}" r="2" fill="${accent ? ACCENT : fill}" stroke="${accent ? ACCENT : ink}" stroke-width="1.5"/>`;
+    accent
+      ? `<circle cx="${cx}" cy="${cy}" r="2.4" fill="${ACCENT}"/>`
+      : `<circle cx="${cx}" cy="${cy}" r="2" fill="${fill}" stroke="${ink}" stroke-width="1.6"/>`;
 
   return [
-    `<g stroke="${ink}" stroke-width="1.6" stroke-linecap="round">`,
+    `<g stroke="${ink}" stroke-width="1.8" stroke-linecap="round">`,
     `<line x1="${X}" y1="${TOP}" x2="${X}" y2="${BOTTOM}"/>`,
     ...TIERS.map(
       ([jy, dx, ty]) =>
         `<line x1="${X}" y1="${jy}" x2="${X - dx}" y2="${ty}"/><line x1="${X}" y1="${jy}" x2="${X + dx}" y2="${ty}"/>`,
     ),
     `</g>`,
-    `<circle cx="${X}" cy="${TOP}" r="2.2" fill="${ink}"/>`,
+    `<circle cx="${X}" cy="${TOP}" r="2.3" fill="${ink}"/>`,
     `<circle cx="${X}" cy="${BOTTOM}" r="1.5" fill="${ink}"/>`,
-    ...TIERS.map(([, dx, ty], i) => node(X - dx, ty, false) + node(X + dx, ty, i === 1)),
+    // The narrow top level uses small solid nodes so it stays open at header size.
+    ...TIERS.map(([, dx, ty], i) =>
+      i === 0
+        ? `<circle cx="${X - dx}" cy="${ty}" r="1.6" fill="${ink}"/><circle cx="${X + dx}" cy="${ty}" r="1.6" fill="${ink}"/>`
+        : node(X - dx, ty, false) + node(X + dx, ty, i === 1),
+    ),
   ].join("");
 }
 

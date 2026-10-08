@@ -7,7 +7,7 @@ const MUTED = "#9AA0A5";
 const ACCENT = "#2563EB";
 
 function Ring({ x, y, r = 4.5, color = INK }: { x: number; y: number; r?: number; color?: string }) {
-  return <circle cx={x} cy={y} r={r} fill="#fff" stroke={color} strokeWidth="1.5" />;
+  return <circle cx={x} cy={y} r={r} fill="#fff" stroke={color} strokeWidth="1.6" />;
 }
 
 function Dot({ x, y, r = 4.5, color = INK }: { x: number; y: number; r?: number; color?: string }) {
@@ -16,8 +16,13 @@ function Dot({ x, y, r = 4.5, color = INK }: { x: number; y: number; r?: number;
 
 export function ServiceGlyph({ kind, className }: { kind: "web" | "commerce" | "systems"; className?: string }) {
   return (
-    <svg viewBox="0 0 120 72" fill="none" className={className} aria-hidden>
-      <g stroke={INK} strokeWidth="1.5" strokeLinecap="round">
+    <svg
+      viewBox="0 0 120 72"
+      fill="none"
+      className={`overflow-visible [&_*]:[vector-effect:non-scaling-stroke] ${className}`}
+      aria-hidden
+    >
+      <g stroke={INK} strokeWidth="1.6" strokeLinecap="round">
         {kind === "web" && (
           <>
             <path d="M60 10v16M20 26h80M20 26v18M60 26v18M100 26v18" />

@@ -42,7 +42,7 @@ export function Process() {
               />
               <p className="text-label text-muted">{String(i + 1).padStart(2, "0")}</p>
               <h3 className="text-h3 mt-2">{step.title}</h3>
-              <p className="text-body mt-3 max-w-[30ch] text-muted lg:pr-4">{step.text}</p>
+              <p className="text-body mt-3 max-w-[32ch] text-ink/75 lg:pr-4">{step.text}</p>
             </li>
           );
         })}

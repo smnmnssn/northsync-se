@@ -7,9 +7,9 @@ type LogoProps = {
 
 export function Logo({ inverted = false, className = "" }: LogoProps) {
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <SpruceMark inverted={inverted} className="size-8 shrink-0" />
-      <span className="text-[0.9375rem] leading-none font-semibold tracking-[0.16em]">
+    <span className={`inline-flex items-center gap-3 ${className}`}>
+      <SpruceMark inverted={inverted} className="size-9 shrink-0 lg:size-10" />
+      <span className="text-base leading-none font-semibold tracking-[0.15em] lg:text-lg">
         NORTHSYNC
       </span>
     </span>

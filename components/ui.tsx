@@ -52,9 +52,17 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
 }
 
 /** Mono metadata line; separators stay attached so wrapped lines never start with "·". */
-export function MetaList({ items, className = "" }: { items: readonly string[]; className?: string }) {
+export function MetaList({
+  items,
+  size = "label",
+  className = "",
+}: {
+  items: readonly string[];
+  size?: "label" | "meta";
+  className?: string;
+}) {
   return (
-    <p className={`text-label flex flex-wrap gap-x-2 ${className}`}>
+    <p className={`${size === "meta" ? "text-meta" : "text-label"} flex flex-wrap gap-x-2 ${className}`}>
       {items.map((item, i) => (
         <Fragment key={item}>
           <span className="whitespace-nowrap">

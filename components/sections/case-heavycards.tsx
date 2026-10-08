@@ -79,7 +79,7 @@ export function CaseHeavyCards() {
           {FEATURES.map((feature) => (
             <li key={feature} className="flex items-center gap-3 border-b border-night-line py-4 md:py-5">
               <span aria-hidden className="size-2 rounded-full border border-night-muted" />
-              <span className="text-[0.9375rem]">{feature}</span>
+              <span className="text-base md:text-[1.0625rem]">{feature}</span>
             </li>
           ))}
         </ul>

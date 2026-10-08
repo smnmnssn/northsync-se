@@ -15,12 +15,12 @@ export function About() {
           <p className="text-lead">
             Northsync drivs av Simon Månsson och arbetar med webbutveckling, e-handel och digitala system.
           </p>
-          <p className="text-body mt-6 text-muted">
+          <p className="text-body mt-6 text-ink/75">
             Jag startade Northsync med en enkel idé: digitala lösningar ska utgå från hur verksamheten faktiskt
             fungerar. Ibland innebär det att bygga något nytt från grunden. Ibland handlar det om att förbättra det
             som redan finns.
           </p>
-          <p className="text-body mt-4 text-muted">
+          <p className="text-body mt-4 text-ink/75">
             Jag arbetar nära kunden genom hela projektet, från första idé till färdig lösning.
           </p>
         </div>

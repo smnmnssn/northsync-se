@@ -8,13 +8,14 @@ const X = 240;
 const APEX = 40;
 const BASE = 520;
 
-// [junction y, tip dx, tip y]
+// [junction y, tip dx, tip y] — same taper as the compact mark: narrow,
+// steeper levels at the top, wider and more drooping levels at the base.
 const TIERS = [
-  [92, 38, 130],
-  [152, 72, 204],
-  [218, 108, 284],
-  [290, 144, 366],
-  [366, 180, 452],
+  [92, 30, 126],
+  [152, 62, 200],
+  [218, 102, 280],
+  [290, 148, 366],
+  [366, 200, 456],
 ] as const;
 
 type Point = [number, number];
@@ -28,13 +29,15 @@ const TWIGS: { from: Point; to: Point }[] = TIERS.slice(2).flatMap(([jy, dx, ty]
   });
 });
 
-const ACCENT = new Set(["312,204", "168,328", "322,445"]);
 const key = ([x, y]: Point) => `${x},${y}`;
 
 const tips: Point[] = TIERS.flatMap(([, dx, ty]) => [
   [X - dx, ty] as Point,
   [X + dx, ty] as Point,
 ]);
+
+// Second level right tip, fourth level left branchlet, fifth level right branchlet end.
+const ACCENT = new Set([key(tips[3]), key(TWIGS[2].from), key(TWIGS[5].to)]);
 
 const SIGNAL_PATH = `M${X} ${APEX} V${TIERS[1][0]} L${X + TIERS[1][1]} ${TIERS[1][2]}`;
 
@@ -71,7 +74,7 @@ export function SpruceNetwork({ className }: { className?: string }) {
       {/* structure */}
       <g
         stroke="#111315"
-        strokeWidth="1.5"
+        strokeWidth="1.6"
         strokeLinecap="round"
         vectorEffect="non-scaling-stroke"
         className="hero-enter-slow"
@@ -131,7 +134,7 @@ export function SpruceNetwork({ className }: { className?: string }) {
               r="6"
               fill="#F6F7F4"
               stroke="#111315"
-              strokeWidth="1.5"
+              strokeWidth="1.6"
               vectorEffect="non-scaling-stroke"
             />
           ),
@@ -154,7 +157,7 @@ export function SpruceNetwork({ className }: { className?: string }) {
                 r="4"
                 fill="#F6F7F4"
                 stroke="#646A6F"
-                strokeWidth="1.5"
+                strokeWidth="1.6"
                 vectorEffect="non-scaling-stroke"
                 className={i < 2 ? "node-breathe" : undefined}
                 style={i < 2 ? { animationDelay: `${i * 4.5}s` } : undefined}
