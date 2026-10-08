@@ -21,6 +21,7 @@ const SLIDES = [
     src: "/case/heavycards-sortiment-desktop.png",
     width: 1787,
     height: 1301,
+    narrow: { src: "/case/heavycards-sortiment-desktop-mobile.png", width: 2099, height: 2736 },
     alt: "Skärmbild av HeavyCards produktkatalog med kategorier, filter och produktkort.",
   },
   {
@@ -49,17 +50,19 @@ const SHOT_SIZES = "(min-width: 1368px) 1176px, (min-width: 768px) calc(100vw - 
 /** Native <picture>: portrait image below 560px (the stage's own breakpoint), landscape above. */
 function ResponsiveShot({
   slide,
+  priority,
 }: {
+  priority: boolean;
   slide: { src: string; width: number; height: number; alt: string; narrow: { src: string; width: number; height: number } };
 }) {
   const common = { alt: slide.alt, quality: 90, sizes: SHOT_SIZES };
-  const wide = getImageProps({ ...common, src: slide.src, width: slide.width, height: slide.height, priority: true });
+  const wide = getImageProps({ ...common, src: slide.src, width: slide.width, height: slide.height, priority });
   const narrow = getImageProps({
     ...common,
     src: slide.narrow.src,
     width: slide.narrow.width,
     height: slide.narrow.height,
-    priority: true,
+    priority,
   });
   return (
     <picture className="contents">
@@ -113,6 +116,7 @@ export function HeavyCardsCarousel() {
 
   return (
     <figure className="mt-12 lg:mt-16" data-reveal>
+      <p className="mb-3 text-sm text-night-muted">*Endast testdata visas i bilderna.</p>
       <div
         role="region"
         aria-roledescription="carousel"
@@ -164,7 +168,7 @@ export function HeavyCardsCarousel() {
                 ) : (
                   <div className="flex size-full items-center justify-center">
                     {"narrow" in slide ? (
-                      <ResponsiveShot slide={slide} />
+                      <ResponsiveShot slide={slide} priority={i === 0} />
                     ) : (
                     <Image
                       src={slide.src}
@@ -220,8 +224,6 @@ export function HeavyCardsCarousel() {
             </button>
           ))}
         </div>
-
-        <p className="-mt-2 text-sm text-night-muted">Endast testdata visas i bilderna.</p>
       </figcaption>
     </figure>
   );
