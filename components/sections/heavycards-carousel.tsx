@@ -25,15 +25,6 @@ const SLIDES = [
     alt: "Skärmbild av HeavyCards produktkatalog med kategorier, filter och produktkort.",
   },
   {
-    title: "Mobil handel",
-    caption: "Produktvy och köpupplevelse anpassad för mobil",
-    src: "/case/heavycards-mobile-product-page.png",
-    width: 440,
-    height: 1610,
-    alt: "Skärmbild av en produktsida i HeavyCards mobilvy med pris, lagerstatus och knapp för kundvagn.",
-    mobile: true,
-  },
-  {
     title: "Administration",
     caption: "Order, lager, recensioner och butiksadministration",
     src: "/case/heavycards-admin-overview.png",
@@ -41,6 +32,15 @@ const SLIDES = [
     height: 1236,
     narrow: { src: "/case/heavycards-admin-overview-mobile.png", width: 1438, height: 1308 },
     alt: "Skärmbild av HeavyCards administrationsöversikt med nya beställningar, försäljning, senaste order och lågt lager.",
+  },
+  {
+    title: "Mobil handel",
+    caption: "Produktvy och köpupplevelse anpassad för mobil",
+    src: "/case/heavycards-mobile-product-page.png",
+    width: 440,
+    height: 1610,
+    alt: "Skärmbild av en produktsida i HeavyCards mobilvy med pris, lagerstatus och knapp för kundvagn.",
+    mobile: true,
   },
 ] as const;
 
